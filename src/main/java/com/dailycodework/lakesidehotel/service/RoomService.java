@@ -81,7 +81,7 @@ public class RoomService implements IRoomService {
                 throw new InternalServerException("Fail updating room");
             }
         }
-       return roomRepository.save(room);
+        return roomRepository.save(room);
     }
 
     @Override
