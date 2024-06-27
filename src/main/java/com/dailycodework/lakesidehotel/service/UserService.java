@@ -26,7 +26,7 @@ public class UserService implements IUserService {
     @Override
     public User registerUser(User user) {
         if (userRepository.existsByEmail(user.getEmail())){
-            throw new UserAlreadyExistsException(user.getEmail() + " already exists");
+            throw new UserAlreadyExistsException(user.getEmail() + " đã tồn tại");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         System.out.println(user.getPassword());
@@ -53,6 +53,6 @@ public class UserService implements IUserService {
     @Override
     public User getUser(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy người dùng"));
     }
 }

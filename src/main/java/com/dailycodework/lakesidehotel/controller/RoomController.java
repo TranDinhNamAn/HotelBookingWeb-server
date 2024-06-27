@@ -98,7 +98,7 @@ public class RoomController {
         return theRoom.map(room -> {
             RoomResponse roomResponse = getRoomResponse(room);
             return  ResponseEntity.ok(Optional.of(roomResponse));
-        }).orElseThrow(() -> new ResourceNotFoundException("Room not found"));
+        }).orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy phòng"));
     }
 
     @GetMapping("/available-rooms")

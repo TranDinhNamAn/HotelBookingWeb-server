@@ -52,7 +52,7 @@ public class RoomService implements IRoomService {
     public byte[] getRoomPhotoByRoomId(Long roomId) throws SQLException {
         Optional<Room> theRoom = roomRepository.findById(roomId);
         if(theRoom.isEmpty()){
-            throw new ResourceNotFoundException("Sorry, Room not found!");
+            throw new ResourceNotFoundException("Xin lỗi, không tìm thấy phòng!");
         }
         Blob photoBlob = theRoom.get().getPhoto();
         if(photoBlob != null){
@@ -78,7 +78,7 @@ public class RoomService implements IRoomService {
             try {
                 room.setPhoto(new SerialBlob(photoBytes));
             } catch (SQLException ex) {
-                throw new InternalServerException("Fail updating room");
+                throw new InternalServerException("Cập nhật phòng không thành công");
             }
         }
         return roomRepository.save(room);
