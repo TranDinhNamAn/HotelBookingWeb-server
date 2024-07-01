@@ -8,9 +8,6 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * @author Simpson Alfred
- */
 @Data
 @NoArgsConstructor
 public class RoomResponse {
@@ -20,7 +17,6 @@ public class RoomResponse {
     private boolean isBooked;
     private String photo;
     private List<BookingResponse>bookings;
-
     public RoomResponse(Long id, String roomType, BigDecimal roomPrice) {
         this.id = id;
         this.roomType = roomType;
@@ -34,7 +30,7 @@ public class RoomResponse {
         this.roomPrice = roomPrice;
         this.isBooked = isBooked;
         this.photo = photoBytes != null ? Base64.encodeBase64String(photoBytes) : null;
-       this.bookings = bookings;
+        this.bookings = bookings;
     }
 
 }

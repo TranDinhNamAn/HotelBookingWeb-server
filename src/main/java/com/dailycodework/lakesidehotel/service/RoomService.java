@@ -38,10 +38,6 @@ public class RoomService implements IRoomService {
         return roomRepository.save(room);
     }
 
-    @Override
-    public List<String> getAllRoomTypes() {
-        return roomRepository.findDistinctRoomTypes();
-    }
 
     @Override
     public List<Room> getAllRooms() {
@@ -60,7 +56,20 @@ public class RoomService implements IRoomService {
         }
         return null;
     }
+    @Override
+    public List<String> getAllRoomTypes() {
+        return roomRepository.findDistinctRoomTypes();
+    }
 
+    @Override
+    public Optional<Room> getRoomById(Long roomId) {
+        return Optional.of(roomRepository.findById(roomId).get());
+    }
+
+    @Override
+    public List<Room> getAvailableRooms(LocalDate checkInDate, LocalDate checkOutDate, String roomType) {
+        return roomRepository.findAvailableRoomsByDatesAndType(checkInDate, checkOutDate, roomType);
+    }
     @Override
     public void deleteRoom(Long roomId) {
         Optional<Room> theRoom = roomRepository.findById(roomId);
@@ -82,15 +91,5 @@ public class RoomService implements IRoomService {
             }
         }
         return roomRepository.save(room);
-    }
-
-    @Override
-    public Optional<Room> getRoomById(Long roomId) {
-        return Optional.of(roomRepository.findById(roomId).get());
-    }
-
-    @Override
-    public List<Room> getAvailableRooms(LocalDate checkInDate, LocalDate checkOutDate, String roomType) {
-        return roomRepository.findAvailableRoomsByDatesAndType(checkInDate, checkOutDate, roomType);
     }
 }

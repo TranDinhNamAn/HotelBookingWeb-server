@@ -11,9 +11,6 @@ import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Simpson Alfred
- */
 @Entity
 @Getter
 @Setter
